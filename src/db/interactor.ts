@@ -9,7 +9,7 @@ interface ICredentials {
 }
 
 const fetchCredentials = (): ICredentials => {
-    return JSON.parse(readFileSync('./credentails.json', 'utf-8')) as ICredentials;
+    return JSON.parse(readFileSync('credentials.json', { encoding: "utf-8"})) as ICredentials;
 }
 
 const credentials = fetchCredentials();
