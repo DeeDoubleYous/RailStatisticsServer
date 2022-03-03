@@ -4,7 +4,7 @@ module.exports = {
     mode: 'production',
     entry: __dirname + '/src/app.ts',
     output:{
-        path: __dirname+ 'dist',
+        path: __dirname+ '/dist',
         filename: 'app.js'
     },
     externals: [nodeExternals()],
