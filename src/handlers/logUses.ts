@@ -1,7 +1,13 @@
 import {Request, Response} from 'express';
 import { executeQuery } from '../db/interactor';
+import { checkKey } from '../checker/keyChecker';
 
 export const logUses = async (req: Request, res: Response): Promise<void> => {
+    if(!checkKey(req.body.key)){
+        res.status(403);
+        res.end();
+    }
+
     try{
         if(req.body.layerId && req.body.timestamp){
             const sql = 'INSERT INTO LayerUsage (LayerId, Timestamp) VALUES (?, ?)';
