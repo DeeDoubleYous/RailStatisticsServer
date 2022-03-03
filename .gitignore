@@ -6,3 +6,6 @@ node_modules
 
 ##Ignore the package-lock.json
 package-lock.json
+
+##Ignore the private credentials
+credentials.json
