@@ -8,7 +8,7 @@ export const readLog = async (req: Request, res: Response) => {
         res.end();
     }else{
         try{
-            const sql = 'SELECT l.LayerTitle, COUNT(lu.UsageID) AS UsageCount FROM Layers l INNER JOIN LayerUsage lu ON l.LayerID = lu.LayerId GROUP BY l.LayerID';
+            const sql = 'CALL Logging_GetTotals()';
     
             const results = await executeQuery(sql, []);
     
