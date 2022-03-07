@@ -1,14 +1,16 @@
 import express from 'express';
-import { logUses } from './handlers/logUses';
+import { json, urlencoded } from 'body-parser';
 import { readLog } from './handlers/readLog';
+import { logUse } from './handlers/logUse';
 
 const app = express();
 
 const port = 8080;
 
-app.use(express.json());
+app.use(json());
+app.use(urlencoded());
 
-app.put('/railvisstats/log', logUses);
+app.post('/railvisstats/log', logUse);
 
 app.get('/railvisstats/log', readLog);
 
