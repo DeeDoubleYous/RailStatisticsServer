@@ -14,7 +14,7 @@ const fetchCredentials = (): ICredentials => {
 
 const credentials = fetchCredentials();
 
-export const executeQuery = async (sql: string, params: any[]) => {
+export const executeQuery = async (sql: string, params: any[] = []) => {
     const connection = await createConnection(credentials);
     const [results] = await connection.execute(sql, params);
     return results;

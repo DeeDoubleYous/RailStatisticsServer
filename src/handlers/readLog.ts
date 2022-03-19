@@ -11,7 +11,7 @@ export const readLog = async (req: Request, res: Response) => {
     try{
         const sql = 'CALL Logging_GetTotals()';
 
-        const results = await executeQuery(sql, []);
+        const results = await executeQuery(sql);
 
         if(results){
             res.status(200);
@@ -33,7 +33,7 @@ export const readTotal = async (req: Request, res: Response) => {
     try{
         const sql = `CALL Logging_GetTotal()`;
 
-        const result = await executeQuery(sql, []);
+        const result = await executeQuery(sql);
 
         if(result){
             res.status(200);
