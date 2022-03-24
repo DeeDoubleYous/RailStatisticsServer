@@ -3,6 +3,7 @@ import { json, urlencoded } from 'body-parser';
 import { readLog, readTotal } from './handlers/readLog';
 import { logUse } from './handlers/logUse';
 import { storeToken } from './handlers/tokenStore';
+import { readToken } from './handlers/readToken';
 
 const app = express();
 
@@ -18,7 +19,9 @@ app.get(`/${appName}/log`, readLog);
 
 app.get(`/${appName}/log/total`, readTotal);
 
-app.post(`/${appName}/token`, storeToken)
+app.post(`/${appName}/token`, storeToken);
+
+app.get(`/${appName}/token`, readToken);
 
 app.listen(port, () => {
     console.log(`App is listening on http://localhost:${port}`);
