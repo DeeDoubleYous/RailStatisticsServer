@@ -3,7 +3,6 @@ import { Request, Response } from "express";
 import { checkKey } from "../checker/keyChecker";
 
 export const stationCode = async (req: Request, res: Response) => {
-    console.log(req);
     if(!checkKey(req.query.key as string)){
         res.status(403);
         res.end();
@@ -11,9 +10,9 @@ export const stationCode = async (req: Request, res: Response) => {
     }
     try{
         if(req.query.station){
-            const sql = 'SELECT s.code as code, s.station as station FROM Stations s WHERE s.Station = UPPER(?)';
+            const sql = 'SELECT s.code as code, s.station as station FROM Stations s WHERE s.Station LIKE ?';
 
-            const request = await executeQuery(sql, [req.query.station]);
+            const request = await executeQuery(sql, [`%${req.query.station}%`]);
 
             if(request){
                 res.status(200);
